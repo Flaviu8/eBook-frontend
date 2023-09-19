@@ -1,0 +1,45 @@
+.navbar {
+    background-color: rgb(41, 41, 41);
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    padding-top: 18px;
+    margin-left: 44px;
+}
+
+.navbar ul a {
+    list-style: none;
+    text-decoration: none;
+    margin-left: 22px;
+    color: #fdfdfd;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.buttons_form {
+    padding-top: 18px;
+    margin-right: 22px;
+}
+
+.buttons_form button {
+    width: 140px;
+    height: 36px;
+    font-size: 18px;
+    background-color: rgb(228, 217, 204);
+    margin-left: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+.buttons_form button:hover {
+    background-color: rgb(196, 193, 193);
+    transform: translateY(-2px);
+    transition: ease-in 0.2s;
+}
+
