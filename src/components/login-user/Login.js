@@ -1,3 +1,4 @@
+import React from "react";
 import { useFormik } from "formik";
 import {
   Box,
@@ -15,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const navigate = useNavigate()
 
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -27,10 +29,11 @@ export default function Login() {
   axios({
     method: 'POST',
     url: 'http://localhost:8000/login',
-    data: values
+    data: values,
+    withCredentials: true
   })
+  
     .then(function (res) {
-       console.log(res)
        if (res.status === 200) {
         
         // Navigate to the dashboard only if login was successful

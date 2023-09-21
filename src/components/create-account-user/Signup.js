@@ -12,9 +12,6 @@ import {
 import axios from "axios";
 
 export default function Signup() {
-  
-
-
 
   const formik = useFormik({
     initialValues: {

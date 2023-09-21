@@ -1,40 +1,44 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 export default function Dashboard() {
-    const [data, setData] = useState('');
-   
+  const [user, setUser] = useState('');
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-        
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
 
-          // Make a request to your server to check if the user is logged in
-          const response = await axios.get('http://localhost:8000/user-info', {
-         
+        // Make a GET request to fetch user information with the JWT token
+        const response = await axios.get('http://localhost:8000/user', {
+          withCredentials: true, // Send cookies with the request
         });
-          console.log(response)
-  
-      
-        } catch (error) {
-          // An error occurred, handle it appropriately
-          console.error("Error checking login status:", error);
-    
-        }
-      };
-  
-      fetchData();
-    }, []);
 
+        // Assuming the response data contains user information
+        const userData = response.data;
+
+        // Update the user state with the fetched data
+        setUser(userData);
+      } catch (error) {
+        // An error occurred, handle it appropriately
+        console.error('Error fetching user information:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <div className='dashboard_main'>
-        <h1>Dashboard</h1>
+    <div className="dashboard_main">
+      <h1>Dashboard</h1>
+      {user ? (
         <div>
-          <h1>Welcome {data.username}</h1>
+          <h1>Welcome {user.user.username}</h1>
+          {/* Render other user information as needed */}
         </div>
+      ) : (
+        <p>Loading user data...</p>
+      )}
     </div>
-  )
+  );
 }
-
